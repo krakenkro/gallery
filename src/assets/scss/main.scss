@@ -1,0 +1,19 @@
+@import '@/assets/scss/global.scss';
+
+body {
+    font-family: Roboto, "Open Sans", Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+main {
+	flex: 1 0 auto;
+}

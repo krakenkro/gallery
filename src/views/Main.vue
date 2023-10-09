@@ -8,11 +8,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<ul class="gallery__photos">
-				<li class="gallery__photo" v-for="photo in default_photos" :key="photo.id" @click="$router.push(`/photo/${photo.id}`)">
-					<img :src="photo.urls.small" :alt="photo.description">
-				</li>
-			</ul>
+			<photo-list :photos="default_photos" />
 		</div>
 		<div v-infinite-scroll="loadMore" />
 	</div>
@@ -21,9 +17,14 @@
 <script>
 import axios from 'axios';
 import InfiniteScroll from 'vue-infinite-scroll';
+import PhotoList from '@/components/PhotoList.vue';
+
 export default {
 	directives: {
 		InfiniteScroll,
+	},
+	components: {
+		PhotoList
 	},
 	data() {
 		return {
@@ -96,33 +97,6 @@ export default {
 
 <style lang="scss" scoped>
 .gallery {
-	&__photos {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		gap: 20px;
-
-		@media (min-width: 768px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-	}
-
-	&__photo {
-		cursor: pointer;
-
-		img {
-			max-width: 470px;
-			max-height: 440px;
-			width: 100%;
-			height: 100%;
-			object-fit: cover; 
-			border-radius: 8px;
-		}
-	}
-
 	&__search {
 		background-image: url('@/assets/images/van_small.jpg');
   		background-repeat: no-repeat;
